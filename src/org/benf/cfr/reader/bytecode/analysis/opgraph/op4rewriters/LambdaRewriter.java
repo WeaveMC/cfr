@@ -254,6 +254,7 @@ public class LambdaRewriter implements Op04Rewriter, ExpressionRewriter {
             return new LValueExpression(lValue);
         }
         if (e instanceof NewObjectArray) return e;
+        if (e instanceof CastExpression) return e;
         throw new CannotDelambaException();
     }
 
