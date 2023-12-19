@@ -28,6 +28,10 @@ public class Ident {
         return true;
     }
 
+    public int getStackPos() {
+        return stackpos;
+    }
+
     public int getIdx() {
         return idx;
     }

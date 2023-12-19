@@ -31,12 +31,12 @@ public class NamedVariableFromHint implements NamedVariable {
 
     @Override
     public Dumper dump(Dumper d, boolean defines) {
-        return d.variableName(name, this, defines);
+        return d.variableName(name, slot, -1, -1, defines);
     }
 
     @Override
-    public Dumper dumpParameter(Dumper d, MethodPrototype methodPrototype, int index, boolean defines) {
-        return d.parameterName(name, this, methodPrototype, index, defines);
+    public Dumper dumpParameter(Dumper d, MethodPrototype methodPrototype, int argPosition, int lvIndex, boolean defines) {
+        return d.parameterName(name, this, methodPrototype, argPosition, lvIndex, defines);
     }
 
     @Override

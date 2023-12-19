@@ -2,12 +2,9 @@ package org.benf.cfr.reader.util.output;
 
 import org.benf.cfr.reader.api.OutputSinkFactory;
 import org.benf.cfr.reader.api.SinkReturns;
-import org.benf.cfr.reader.bytecode.analysis.loc.HasByteCodeLoc;
 import org.benf.cfr.reader.bytecode.analysis.types.JavaRefTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.JavaTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.MethodPrototype;
-import org.benf.cfr.reader.bytecode.analysis.variables.NamedVariable;
-import org.benf.cfr.reader.entities.Field;
 import org.benf.cfr.reader.entities.Method;
 import org.benf.cfr.reader.mapping.NullMapping;
 import org.benf.cfr.reader.mapping.ObfuscationMapping;
@@ -287,12 +284,12 @@ public class TokenStreamDumper extends AbstractDumper {
     }
 
     @Override
-    public Dumper parameterName(String name, Object ref, MethodPrototype method, int index, boolean defines) {
+    public Dumper parameterName(String name, Object ref, MethodPrototype method, int argPosition, int lvIndex, boolean defines) {
         return identifier(name, ref, defines);
     }
 
     @Override
-    public Dumper variableName(String name, NamedVariable variable, boolean defines) {
+    public Dumper variableName(String name, int lvIndex, int lvtRowIndex, int startOpIndex, boolean defines) {
         return identifier(name, null, defines);
     }
 

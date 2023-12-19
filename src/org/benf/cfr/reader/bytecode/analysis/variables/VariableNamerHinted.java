@@ -64,6 +64,7 @@ public class VariableNamerHinted implements VariableNamer {
                 // if used in a legit location, however we should also track if this
                 // is an instance method.
                 if (name.equals(MiscConstants.THIS) && ident.getIdx() == 0) {
+                    namedVariable = new NamedVariableFromHint(name, 0, -1);
                     namedVariable.forceName(MiscConstants.THIS);
                 }
             } else {

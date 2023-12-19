@@ -4,6 +4,7 @@ import org.benf.cfr.reader.bytecode.analysis.loc.HasByteCodeLoc;
 import org.benf.cfr.reader.bytecode.analysis.types.JavaRefTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.JavaTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.MethodPrototype;
+import org.benf.cfr.reader.bytecode.analysis.variables.Ident;
 import org.benf.cfr.reader.bytecode.analysis.variables.NamedVariable;
 import org.benf.cfr.reader.entities.Field;
 import org.benf.cfr.reader.entities.Method;
@@ -95,14 +96,14 @@ public abstract class DelegatingDumper implements Dumper {
     }
 
     @Override
-    public Dumper parameterName(String name, Object ref, MethodPrototype method, int index, boolean defines) {
-        delegate.parameterName(name, ref, method, index, defines);
+    public Dumper parameterName(String name, Object ref, MethodPrototype method, int argPosition, int lvIndex, boolean defines) {
+        delegate.parameterName(name, ref, method, argPosition, lvIndex, defines);
         return this;
     }
 
     @Override
-    public Dumper variableName(String name, NamedVariable variable, boolean defines) {
-        delegate.variableName(name, variable, defines);
+    public Dumper variableName(String name, int lvIndex, int lvtRowIndex, int startOpIndex, boolean defines) {
+        delegate.variableName(name, lvIndex, lvtRowIndex, startOpIndex, defines);
         return this;
     }
 

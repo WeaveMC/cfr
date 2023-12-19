@@ -5,6 +5,7 @@ import org.benf.cfr.reader.bytecode.analysis.parse.utils.QuotingUtils;
 import org.benf.cfr.reader.bytecode.analysis.types.JavaRefTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.JavaTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.MethodPrototype;
+import org.benf.cfr.reader.bytecode.analysis.variables.Ident;
 import org.benf.cfr.reader.bytecode.analysis.variables.NamedVariable;
 import org.benf.cfr.reader.entities.Field;
 import org.benf.cfr.reader.mapping.NullMapping;
@@ -88,14 +89,14 @@ public abstract class StreamDumper extends AbstractDumper {
     }
 
     @Override
-    public Dumper parameterName(String name, Object ref, MethodPrototype method, int index, boolean defines) {
+    public Dumper parameterName(String name, Object ref, MethodPrototype method, int argPosition, int lvIndex, boolean defines) {
         identifier(name, ref, defines);
         return this;
     }
 
     @Override
-    public Dumper variableName(String name, NamedVariable variable, boolean defines) {
-        identifier(name, variable, defines);
+    public Dumper variableName(String name, int lvIndex, int lvtRowIndex, int startOpIndex, boolean defines) {
+        identifier(name, null, defines);
         return this;
     }
 

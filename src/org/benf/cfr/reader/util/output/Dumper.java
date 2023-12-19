@@ -4,6 +4,7 @@ import org.benf.cfr.reader.bytecode.analysis.loc.HasByteCodeLoc;
 import org.benf.cfr.reader.bytecode.analysis.types.JavaRefTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.JavaTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.MethodPrototype;
+import org.benf.cfr.reader.bytecode.analysis.variables.Ident;
 import org.benf.cfr.reader.bytecode.analysis.variables.NamedVariable;
 import org.benf.cfr.reader.entities.Field;
 import org.benf.cfr.reader.entities.Method;
@@ -52,12 +53,10 @@ public interface Dumper extends MethodErrorCollector {
 
     Dumper methodName(String name, MethodPrototype method, boolean special, boolean defines);
 
-    Dumper parameterName(String name, Object ref, MethodPrototype method, int index, boolean defines);
-
-    @Deprecated // todo add lv, lvt indices and start offset
-    Dumper variableName(String name, NamedVariable variable, boolean defines);
+    Dumper parameterName(String name, Object ref, MethodPrototype method, int argPosition, int lvIndex, boolean defines);
 
     // fabric
+    Dumper variableName(String name, int lvIndex, int lvtRowIndex, int startOpIndex, boolean defines);
     default Dumper dumpClassDoc(JavaTypeInstance owner) { return this; }
     default Dumper dumpMethodDoc(MethodPrototype method) { return this; }
     default Dumper dumpFieldDoc(Field field, JavaTypeInstance owner) { return this; }

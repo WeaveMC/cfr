@@ -141,11 +141,11 @@ public class LambdaExpressionFallback extends AbstractExpression implements Lamb
                 d.separator("(");
             }
             List<String> args = ListFactory.newList(n);
-            for (int x = 0; x < n; ++x) {
-                if (x > 0) d.separator(", ");
-                String arg = "arg_" + x;
+            for (int argPosition = 0; argPosition < n; ++argPosition) {
+                if (argPosition > 0) d.separator(", ");
+                String arg = "arg_" + argPosition;
                 args.add(arg);
-                d.parameterName(arg, arg, lambdaFn, x, true);
+                d.parameterName(arg, arg, lambdaFn, argPosition, lambdaFn.getParameterLValues().get(argPosition).localVariable.getIdx(), true);
             }
             if (multi) {
                 d.separator(")");

@@ -75,7 +75,7 @@ public class LocalClassScopeDiscoverImpl extends AbstractLValueScopeDiscoverer {
         }
 
         @Override
-        public Dumper dumpParameter(Dumper d, MethodPrototype methodPrototype, int index, boolean defines) {
+        public Dumper dumpParameter(Dumper d, MethodPrototype methodPrototype, int argPosition, int lvIndex, boolean defines) {
             return null;
         }
 

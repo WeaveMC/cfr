@@ -5,6 +5,7 @@ import org.benf.cfr.reader.bytecode.analysis.types.JavaRefTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.JavaTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.MethodPrototype;
 import org.benf.cfr.reader.bytecode.analysis.types.TypeConstants;
+import org.benf.cfr.reader.bytecode.analysis.variables.Ident;
 import org.benf.cfr.reader.bytecode.analysis.variables.NamedVariable;
 import org.benf.cfr.reader.entities.ClassFile;
 import org.benf.cfr.reader.entities.Field;
@@ -108,12 +109,12 @@ public class TypeUsageCollectingDumper implements Dumper {
     }
 
     @Override
-    public Dumper parameterName(String name, Object ref, MethodPrototype method, int index, boolean defines) {
+    public Dumper parameterName(String name, Object ref, MethodPrototype method, int argPosition, int lvIndex, boolean defines) {
         return this;
     }
 
     @Override
-    public Dumper variableName(String name, NamedVariable variable, boolean defines) {
+    public Dumper variableName(String name, int lvIndex, int lvtRowIndex, int startOpIndex, boolean defines) {
         return this;
     }
 

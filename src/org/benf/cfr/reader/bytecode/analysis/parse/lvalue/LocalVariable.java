@@ -111,12 +111,16 @@ public class LocalVariable extends AbstractLValue {
 
     @Override
     public Dumper dump(Dumper d, boolean defines) {
-        return name.dump(d, defines); // todo pass lv, lvt, start offset
+        if (ident != null && originalRawOffset != ident.getStackPos()) {
+            int i = 0;
+        }
+
+        return name.dumpLocalVariable(d, idx, -1, originalRawOffset, defines);
     }
 
     @Override
     public Dumper dumpInner(Dumper d) {
-        name.dump(d);
+        name.dumpLocalVariable(d, idx, -1, originalRawOffset, false);
         // Note that this print is only decorating when we have bad data.
         d.print(typeToString());
         return d;

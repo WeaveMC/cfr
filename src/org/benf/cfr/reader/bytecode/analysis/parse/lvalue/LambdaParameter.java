@@ -6,17 +6,17 @@ import org.benf.cfr.reader.util.output.Dumper;
 
 public class LambdaParameter extends LocalVariable {
     public final MethodPrototype originalMethod;
-    public final int index; // index in method params, not slot
+    public final int argPosition; // index in method params, not slot
 
     public LambdaParameter(String name, InferredJavaType inferredJavaType, MethodPrototype originalMethod, int index) {
         super(name, inferredJavaType);
-        this.index = index;
+        this.argPosition = index;
         this.originalMethod = originalMethod;
     }
 
     @Override
     public Dumper dump(Dumper d, boolean defines) {
-        getName().dumpParameter(d, originalMethod, index, defines);
+        getName().dumpParameter(d, originalMethod, argPosition, originalMethod.getParameterLValues().get(argPosition).localVariable.getIdx(), defines);
         return d;
     }
 }

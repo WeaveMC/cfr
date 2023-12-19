@@ -278,7 +278,7 @@ public class MethodPrototype implements TypeUsageCollectable {
                 annotationsHelper.dumpParamType(arg, paramIdx, d);
             }
             d.print(" ");
-            param.getName().dumpParameter(d, this, paramIdx, true);
+            param.getName().dumpParameter(d, this, paramIdx, getParameterLValues().get(paramIdx).localVariable.getIdx(), true);
         }
         d.separator(")");
     }

@@ -3,6 +3,7 @@ package org.benf.cfr.reader.util.output;
 import org.benf.cfr.reader.bytecode.analysis.types.JavaRefTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.JavaTypeInstance;
 import org.benf.cfr.reader.bytecode.analysis.types.MethodPrototype;
+import org.benf.cfr.reader.bytecode.analysis.variables.Ident;
 import org.benf.cfr.reader.bytecode.analysis.variables.NamedVariable;
 import org.benf.cfr.reader.entities.Field;
 import org.benf.cfr.reader.entities.Method;
@@ -64,13 +65,13 @@ public class ToStringDumper extends AbstractDumper {
     }
 
     @Override
-    public Dumper parameterName(String name, Object ref, MethodPrototype method, int index, boolean defines) {
+    public Dumper parameterName(String name, Object ref, MethodPrototype method, int argPosition, int lvIndex, boolean defines) {
         return identifier(name, ref, defines);
     }
 
     @Override
-    public Dumper variableName(String name, NamedVariable variable, boolean defines) {
-        return identifier(name, variable, defines);
+    public Dumper variableName(String name, int lvIndex, int lvtRowIndex, int startOpIndex, boolean defines) {
+        return identifier(name, null, defines);
     }
 
     @Override
