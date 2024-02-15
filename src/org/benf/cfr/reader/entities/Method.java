@@ -383,7 +383,9 @@ public class Method implements KnowsRawSize, TypeUsageCollectable {
         javaTypeInstance = javaTypeInstance.getDeGenerifiedType();
         if (!(javaTypeInstance instanceof JavaRefTypeInstance))
             throw new IllegalStateException("Bad local class Type " + javaTypeInstance.getRawName());
-        localClasses.put((JavaRefTypeInstance) javaTypeInstance, suggestedName);
+		if (((JavaRefTypeInstance) javaTypeInstance).getClassFile() == this.classFile)
+			return; // Recursive local class, can happen if the local class is constructed within its self.
+		localClasses.put((JavaRefTypeInstance) javaTypeInstance, suggestedName);
     }
 
     public void markUsedLocalClassType(JavaTypeInstance javaTypeInstance) {
